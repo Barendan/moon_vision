@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import requests
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import time
 
 sheet_endpoint = "https://api.sheety.co/4fbe50a87952f1a22ec40a7a3da86ceb/moonVision/sheet1"
