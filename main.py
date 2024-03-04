@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import requests
 import time
+import pygsheets
+import pandas as pd
 
-sheet_endpoint = "https://api.sheety.co/4fbe50a87952f1a22ec40a7a3da86ceb/moonVision/sheet1"
 
-# Retrieve data and create local store
-response_data = requests.get(sheet_endpoint)
+# Connect GSheets and import relevant data
+gc = pygsheets.authorize(service_file="/Users/Daniel/Desktop/Python_Pies/Moon_vision/creds.json")
+sh = gc.open_by_key('1r64yJ-pb5A7JDa8ioBo079lKbWGXVEe8-Bs4kLUT0Qc')
+wks = sh.sheet1
 
-if response_data.status_code == 200:
-    coin_data = response_data.json()["sheet1"]
-    # print(coin_data)
-else:
-    coin_data = []
+crypto_df = wks.get_as_df()
+yesterday_coin_list = crypto_df.to_dict(orient='records')
+print(yesterday_coin_list)
 
 
 driver = webdriver.Chrome()
@@ -44,22 +44,12 @@ for item in coin_table:
         top_coins.append({"rank": coin_rank, "name": coin_name, "price": coin_price, "increase": coin_perc})
 
 
-
 # Compare new top coins to previous list and make new list
 coin_names = set(c['name'] for c in top_coins)
-updated_coins = [c for c in coin_data if not c['name'] in coin_names]
+updated_coins = [c for c in yesterday_coin_list if not c['name'] in coin_names]
 # print(coin_names)
 print("NEW COINS:", updated_coins)
 
-# delete_res = requests.delete(sheet_endpoint)
-
-
-
-test_entry = {'rank': 2, 'name': 'Ethereum', 'price': 3566, 'increase': 0.30}
-# sheet_response = requests.post(sheet_endpoint, json=updated_coins)
-sheet_response = requests.post(sheet_endpoint, json={"sheet1": test_entry})
-print(sheet_response.json())
-# print({"sheet1": updated_coins})
 
 
 
@@ -90,6 +80,3 @@ driver.quit()
 
 
 # If not same coin as last time, send text message with coin details
-
-
-
