@@ -13,7 +13,7 @@ wks = sh.sheet1
 
 crypto_df = wks.get_as_df()
 yesterday_coin_list = crypto_df.to_dict(orient='records')
-print(yesterday_coin_list)
+# print(yesterday_coin_list)
 
 
 driver = webdriver.Chrome()
@@ -51,9 +51,8 @@ for item in coin_table:
 wks.set_dataframe(pd.DataFrame(top_coins), start='A1')
 # print(pd.DataFrame(top_coins))
 
+
 # Send text message with coin details
-
-
 def send_message():
     account_sid = 'AC9464cf4fd176a7736b920ac9d1aa601d'
     auth_token = 'e3f13a3e76494cd2afa4767db21f6fd8'
