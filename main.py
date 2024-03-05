@@ -73,14 +73,7 @@ def send_message():
         body=message_body
     )
 
-
-# send_message()
-
-
-# Run check twice per day at 6am and 6pm
-
-
-
+send_message()
 
 
 # Compare new top coins to previous list and make new list
