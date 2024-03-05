@@ -74,20 +74,7 @@ def send_message():
         body=message_body
     )
 
+
 send_message()
-
-
-# Compare new top coins to previous list and make new list
-# today_top_coins = set(c['name'] for c in top_coins)
-# print("Today's TOP:", today_top_coins)
-# updated_coins = [c for c in yesterday_coin_list if not c['name'] in today_top_coins]
-# print("NEW COINS:", updated_coins)
-
-
-# Check whether percentages are over 25%, 50%, or 100%
-# for coin in top_coins:
-#     if 50 > float(coin["increase"].rstrip("%")) > 25:
-#         new_coins.append(coin)
-#     # if float(coin["increase"].rstrip("%")) > 50:
 
 driver.quit()
