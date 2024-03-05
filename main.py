@@ -6,7 +6,8 @@ import pygsheets
 import pandas as pd
 
 # Connect GSheets and import relevant data
-gc = pygsheets.authorize(service_file="/Users/Daniel/Desktop/Python_Pies/Moon_vision/creds.json")
+# gc = pygsheets.authorize(service_file="/Users/Daniel/Desktop/Python_Pies/Moon_vision/creds.json")
+gc = pygsheets.authorize(service_file="/home/Barendan/moon_vision/creds.json")
 sh = gc.open_by_key('1r64yJ-pb5A7JDa8ioBo079lKbWGXVEe8-Bs4kLUT0Qc')
 wks = sh.sheet1
 
