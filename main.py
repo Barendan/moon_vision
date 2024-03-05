@@ -16,8 +16,17 @@ yesterday_coin_list = crypto_df.to_dict(orient='records')
 # print(yesterday_coin_list)
 
 
-driver = webdriver.Chrome()
+# Virtualenv fix
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-gpu")
+driver = webdriver.Chrome(options=chrome_options)
+
+# This works for local but not on virtualenv
+# driver = webdriver.Chrome()
 driver.get("https://coinmarketcap.com/")
+
 
 # Wait for page to load
 time.sleep(3)
