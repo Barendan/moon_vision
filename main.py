@@ -52,8 +52,6 @@ wks.set_dataframe(pd.DataFrame(top_coins), start='A1')
 # print(pd.DataFrame(top_coins))
 
 # Send text message with coin details
-
-
 def send_message():
     account_sid = 'AC9464cf4fd176a7736b920ac9d1aa601d'
     auth_token = 'e3f13a3e76494cd2afa4767db21f6fd8'
@@ -74,8 +72,8 @@ def send_message():
         body=message_body
     )
 
-send_message()
 
+send_message()
 
 # Compare new top coins to previous list and make new list
 # today_top_coins = set(c['name'] for c in top_coins)
@@ -89,5 +87,6 @@ send_message()
 #     if 50 > float(coin["increase"].rstrip("%")) > 25:
 #         new_coins.append(coin)
 #     # if float(coin["increase"].rstrip("%")) > 50:
+
 
 driver.quit()
